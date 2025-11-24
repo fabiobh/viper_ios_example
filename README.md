@@ -178,13 +178,20 @@ User Action → View → Presenter → Interactor → NetworkManager
 
 1. Obtenha sua API key em: [https://www.themoviedb.org/settings/api](https://www.themoviedb.org/settings/api)
 
-2. Abra o arquivo `NetworkManager.swift`
-
-3. Substitua `YOUR_TMDB_API_KEY` pela sua chave:
-
-```swift
-private let apiKey = "SUA_API_KEY_AQUI"
+2. Copie o arquivo de exemplo:
+```bash
+cp ios_viper_example/Configuration.plist.example ios_viper_example/Configuration.plist
 ```
+
+3. Abra `Configuration.plist` e substitua `YOUR_TMDB_API_KEY` pela sua chave:
+
+```xml
+<key>TMDB_API_KEY</key>
+<string>SUA_API_KEY_AQUI</string>
+```
+
+> ⚠️ **Segurança**: O arquivo `Configuration.plist` está no `.gitignore` e nunca será commitado ao repositório, mantendo sua API key segura.
+
 
 ## 🧪 Testabilidade
 
@@ -272,8 +279,9 @@ open ios_viper_example.xcodeproj
 ```
 
 3. **Configure a API Key**
-- Edite `NetworkManager.swift`
-- Adicione sua TMDB API key
+- Copie `Configuration.plist.example` para `Configuration.plist`
+- Adicione sua TMDB API key no arquivo `Configuration.plist`
+
 
 4. **Execute o projeto**
 - Selecione um simulador ou dispositivo

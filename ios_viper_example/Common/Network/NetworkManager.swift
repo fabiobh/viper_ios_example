@@ -38,9 +38,26 @@ class NetworkManager {
     static let shared = NetworkManager()
     
     private let baseURL = "https://api.themoviedb.org/3"
-    private let apiKey = "YOUR_TMDB_API_KEY" // Replace with your actual API key
+    private let apiKey: String
     
-    private init() {}
+    private init() {
+        // Load API key from Configuration.plist
+        guard let path = Bundle.main.path(forResource: "Configuration", ofType: "plist"),
+              let config = NSDictionary(contentsOfFile: path),
+              let key = config["TMDB_API_KEY"] as? String,
+              !key.isEmpty && key != "YOUR_TMDB_API_KEY" else {
+            fatalError("""
+                ⚠️ TMDB API Key not configured!
+                
+                Please follow these steps:
+                1. Copy Configuration.plist.example to Configuration.plist
+                2. Get your API key from https://www.themoviedb.org/settings/api
+                3. Replace YOUR_TMDB_API_KEY with your actual API key in Configuration.plist
+                """)
+        }
+        self.apiKey = key
+    }
+
     
     // MARK: - Generic Request
     

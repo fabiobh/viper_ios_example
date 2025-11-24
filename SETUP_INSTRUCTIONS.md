@@ -21,19 +21,23 @@ Para que o app funcione corretamente, você precisa configurar sua chave de API 
 
 ### Passo 2: Configurar no Projeto
 
-1. Abra o arquivo: `ios_viper_example/Common/Network/NetworkManager.swift`
-
-2. Localize a linha:
-```swift
-private let apiKey = "YOUR_TMDB_API_KEY"
+1. No diretório do projeto, copie o arquivo de exemplo:
+```bash
+cp ios_viper_example/Configuration.plist.example ios_viper_example/Configuration.plist
 ```
 
-3. Substitua `YOUR_TMDB_API_KEY` pela sua chave:
-```swift
-private let apiKey = "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6"  // Exemplo
+2. Abra o arquivo: `ios_viper_example/Configuration.plist`
+
+3. Substitua `YOUR_TMDB_API_KEY` pela sua chave de API:
+```xml
+<key>TMDB_API_KEY</key>
+<string>a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6</string>  <!-- Sua chave aqui -->
 ```
 
 4. Salve o arquivo
+
+> ⚠️ **IMPORTANTE**: O arquivo `Configuration.plist` está no `.gitignore` e **nunca** será commitado ao Git, mantendo sua API key segura.
+
 
 ### Passo 3: Executar o Projeto
 
